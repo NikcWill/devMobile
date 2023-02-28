@@ -6,8 +6,8 @@ void main(List<String> args) {
 }
 
 getAPI() async {
-  Uri url = Uri.parse(
-      "https://servicodados.ibge.gov.br/api/v2/censos/nomes/nicollas");
+  Uri url =
+      Uri.parse("https://servicodados.ibge.gov.br/api/v2/censos/nomes/maria");
   var response = await http.get(url);
   print(jsonDecode(response.body)[0]['nome']);
 
