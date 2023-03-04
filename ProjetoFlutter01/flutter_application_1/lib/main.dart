@@ -15,32 +15,74 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: Text(
-            'NuBank',
-          ),
-          backgroundColor: Colors.purple,
-          centerTitle: true,
+      drawer: Drawer(),
+      endDrawer: Drawer(),
+      appBar: AppBar(
+        title: Text(
+          'NuBank',
         ),
-        body: Row(
-          children: [
-            Container(
-              color: Colors.grey.shade600,
-              width: 200,
-              height: 200,
-              child: Center(
-                child: Text('Teu saldo é de 1.000.000'),
+        backgroundColor: Colors.purple,
+        centerTitle: true,
+      ),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              Container(
+                color: Colors.grey.shade600,
+                width: 200,
+                height: 200,
+                child: Center(
+                  child: Text('Teu saldo é de 1.000.000'),
+                ),
               ),
-            ),
-            Container(
-              color: Colors.grey.shade600,
-              width: 200,
-              height: 200,
-              child: Center(
-                child: Text('Ta rico'),
+              Container(
+                color: Colors.grey.shade600,
+                width: 200,
+                height: 200,
+                child: Center(
+                  child: Text('Ta rico'),
+                ),
               ),
-            ),
-          ],
-        ));
+            ],
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              Container(
+                color: Colors.grey.shade600,
+                width: 200,
+                height: 200,
+                child: Center(
+                  child: Text('Teu saldo é de 1.000.000'),
+                ),
+              ),
+              Container(
+                color: Colors.grey.shade600,
+                width: 200,
+                height: 200,
+                child: Center(
+                  child: Text('Ta rico'),
+                ),
+              ),
+            ],
+          )
+        ],
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        items: [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: 'Home',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.search),
+            label: 'Search',
+          ),
+        ],
+      ),
+    );
   }
 }
