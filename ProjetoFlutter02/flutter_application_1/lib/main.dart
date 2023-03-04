@@ -33,8 +33,8 @@ class HomePage extends StatelessWidget {
             children: [
               Container(
                 color: Colors.grey.shade600,
-                width: 200,
-                height: 200,
+                width: MediaQuery.of(context).size.width,
+                height: MediaQuery.of(context).size.height,
                 child: Center(
                   child: Text('Teu saldo é de 1.000.000'),
                 ),
