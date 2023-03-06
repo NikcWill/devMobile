@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-void main(List<String> args) {
+void main() {
   runApp(
     MaterialApp(
       home: HomePage(),
@@ -15,15 +15,39 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.blue.shade600,
       drawer: Drawer(),
-      endDrawer: Drawer(),
       appBar: AppBar(
-        title: Text(
-          'NuBank',
+        actions: [
+          IconButton(
+            icon: Icon(Icons.shopping_cart),
+            onPressed: () {
+              // Adicione a ação desejada ao pressionar o botão de pesquisa
+            },
+          ),
+        ],
+        bottom: PreferredSize(
+          preferredSize: Size.fromHeight(56), // Define a altura do TextField
+
+          child: Padding(
+            padding: EdgeInsets.symmetric(horizontal: 16),
+            child: TextField(
+              decoration: InputDecoration(
+                  hintText: 'Pesquisar',
+                  prefixIcon: Icon(Icons.search),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(15),
+                  ),
+                  filled: true, // Define o preenchimento da caixa de pesquisa
+                  fillColor: Colors.grey[200]),
+            ),
+          ),
         ),
-        backgroundColor: Colors.purple,
-        centerTitle: true,
+        toolbarHeight: 100,
+        title: Text(
+          'EKart',
+        ),
+        backgroundColor: Colors.blue.shade600,
+        centerTitle: false,
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -34,17 +58,9 @@ class HomePage extends StatelessWidget {
               Container(
                 color: Colors.grey.shade600,
                 width: MediaQuery.of(context).size.width,
-                height: MediaQuery.of(context).size.height,
+                height: MediaQuery.of(context).size.height / 3,
                 child: Center(
                   child: Text('Teu saldo é de 1.000.000'),
-                ),
-              ),
-              Container(
-                color: Colors.grey.shade600,
-                width: 200,
-                height: 200,
-                child: Center(
-                  child: Text('Ta rico'),
                 ),
               ),
             ],
@@ -58,6 +74,14 @@ class HomePage extends StatelessWidget {
                 height: 200,
                 child: Center(
                   child: Text('Teu saldo é de 1.000.000'),
+                ),
+              ),
+              Container(
+                color: Colors.grey.shade600,
+                width: 200,
+                height: 200,
+                child: Center(
+                  child: Text('Ta rico'),
                 ),
               ),
               Container(
@@ -73,14 +97,24 @@ class HomePage extends StatelessWidget {
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(
+        currentIndex: 0,
+        backgroundColor: Colors.blue.shade600,
         items: [
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
             label: 'Home',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.search),
-            label: 'Search',
+            icon: Icon(Icons.category),
+            label: 'Category',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.favorite),
+            label: 'Favorite',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.shopping_bag_rounded),
+            label: 'cart',
           ),
         ],
       ),
