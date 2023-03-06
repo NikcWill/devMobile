@@ -10,7 +10,7 @@ void main(List<String> args) {
 }
 
 class HomePage extends StatelessWidget {
-  const HomePage({super.key});f
+  const HomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
