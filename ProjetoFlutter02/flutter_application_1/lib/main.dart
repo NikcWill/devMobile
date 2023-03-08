@@ -70,24 +70,53 @@ class HomePage extends StatelessWidget {
             children: [
               Container(
                 color: Colors.grey.shade600,
-                width: 200,
-                height: 200,
+                width: 50,
+                height: 50,
                 child: Center(
                   child: Text('Teu saldo é de 1.000.000'),
                 ),
               ),
               Container(
                 color: Colors.grey.shade600,
-                width: 200,
-                height: 200,
+                width: 50,
+                height: 50,
                 child: Center(
                   child: Text('Ta rico'),
                 ),
               ),
               Container(
                 color: Colors.grey.shade600,
-                width: 200,
-                height: 200,
+                width: 50,
+                height: 50,
+                child: Center(
+                  child: Text('Ta rico'),
+                ),
+              ),
+            ],
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              Container(
+                color: Colors.grey.shade600,
+                width: 50,
+                height: 50,
+                child: Center(
+                  child: Text('Teu saldo é de 1.000.000'),
+                ),
+              ),
+              Container(
+                color: Colors.grey.shade600,
+                width: 50,
+                height: 50,
+                child: Center(
+                  child: Text('Ta rico'),
+                ),
+              ),
+              Container(
+                color: Colors.grey.shade600,
+                width: 50,
+                height: 50,
                 child: Center(
                   child: Text('Ta rico'),
                 ),
