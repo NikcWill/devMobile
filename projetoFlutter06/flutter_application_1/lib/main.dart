@@ -25,12 +25,16 @@ class _HomePageState extends State<HomePage> {
       body: Container(
         width: MediaQuery.of(context).size.width,
         color: Colors.amber,
-        child: Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
-          Text('Sua Jogada'),
-          CircleAvatar(radius: 60),
-          CircleAvatar(radius: 60),
-          CircleAvatar(radius: 60),
-        ]),
+        child: Column(
+          children: [
+            Text('Sua Jogada'),
+            Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
+              CircleAvatar(radius: 60),
+              CircleAvatar(radius: 60),
+              CircleAvatar(radius: 60),
+            ]),
+          ],
+        ),
       ),
     );
   }
