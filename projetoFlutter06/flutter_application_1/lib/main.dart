@@ -27,9 +27,12 @@ class _HomePageState extends State<HomePage> {
   void gerarJogadaPc() {
     var gerarNumero = Random().nextInt(jogo.length);
     var jogadaSorteada = jogo[gerarNumero];
-    setState(() {
-      jogadaPc = jogadaSorteada;
-    });
+    if (jogadaPc != jogadaSorteada) {
+      setState(() {
+        jogadaPc = jogadaSorteada;
+      });
+    } else
+      gerarJogadaPc();
 
     if (jogadaVoce == jogadaSorteada) {
       setState(() {
