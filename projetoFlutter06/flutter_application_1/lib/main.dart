@@ -18,6 +18,11 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   List jogo = ['Pedra', 'Papel', 'Tesoura'];
+  var jogadaPc = 'PC Aguardando!';
+  var jogadaVoce = '';
+  var resultado = 'Aguardadno';
+  var contVc = 0;
+  var contPc = 0;
 
   void gerarJogadaPc() {
     var gerarNumero = Random().nextInt(jogo.length);
@@ -44,12 +49,6 @@ class _HomePageState extends State<HomePage> {
       });
     }
   }
-
-  var jogadaPc = 'PC Aguardando!';
-  var jogadaVoce = '';
-  var resultado = 'Aguardadno';
-  var contVc = 0;
-  var contPc = 0;
 
   @override
   Widget build(BuildContext context) {
