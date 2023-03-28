@@ -56,141 +56,143 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        centerTitle: true,
-        title: Text('Jo-Ken -Po'),
-      ),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: [
-          Container(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                Container(
-                  padding: EdgeInsets.all(50),
-                  child: Text('Sua Jogada'),
-                ),
-                Row(
+        appBar: AppBar(
+          centerTitle: true,
+          title: Text('Jo-Ken -Po'),
+        ),
+        body: SingleChildScrollView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              Container(
+                child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    InkWell(
-                      onTap: () {
-                        jogadaVoce = jogo[0];
-                        gerarJogadaPc();
-                      },
-                      child: CircleAvatar(
-                        child: Text(jogo[0]),
-                        radius: 80,
-                      ),
+                    Container(
+                      padding: EdgeInsets.all(50),
+                      child: Text('Sua Jogada'),
                     ),
-                    InkWell(
-                      onTap: () {
-                        jogadaVoce = jogo[1];
-                        gerarJogadaPc();
-                      },
-                      child: CircleAvatar(
-                        child: Text(jogo[1]),
-                        radius: 80,
-                      ),
-                    ),
-                    InkWell(
-                      onTap: () {
-                        jogadaVoce = jogo[2];
-                        gerarJogadaPc();
-                      },
-                      child: CircleAvatar(
-                        child: Text(jogo[2]),
-                        radius: 80,
-                      ),
-                    ),
-                  ],
-                ),
-              ],
-            ),
-          ),
-          Container(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                Container(
-                  child: Text('Jogada do computador'),
-                  padding: EdgeInsets.all(50),
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    CircleAvatar(
-                      child: Text(jogadaPc),
-                      radius: 80,
-                    ),
-                  ],
-                ),
-              ],
-            ),
-          ),
-          Container(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                Container(
-                  child: Text('resultado'),
-                  padding: EdgeInsets.all(50),
-                ),
-                Container(
-                  child: Text(resultado),
-                  padding: EdgeInsets.all(5),
-                ),
-              ],
-            ),
-          ),
-          Container(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                Container(
-                  child: Text('Placar'),
-                  padding: EdgeInsets.all(20),
-                ),
-                Container(
-                  width: 400,
-                  height: 200,
-                  decoration: BoxDecoration(
-                      color: Colors.grey[400],
-                      borderRadius: BorderRadius.circular(70)),
-                  child: Column(
+                    Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
-                        Row(
+                        InkWell(
+                          onTap: () {
+                            jogadaVoce = jogo[0];
+                            gerarJogadaPc();
+                          },
+                          child: CircleAvatar(
+                            child: Text(jogo[0]),
+                            radius: 80,
+                          ),
+                        ),
+                        InkWell(
+                          onTap: () {
+                            jogadaVoce = jogo[1];
+                            gerarJogadaPc();
+                          },
+                          child: CircleAvatar(
+                            child: Text(jogo[1]),
+                            radius: 80,
+                          ),
+                        ),
+                        InkWell(
+                          onTap: () {
+                            jogadaVoce = jogo[2];
+                            gerarJogadaPc();
+                          },
+                          child: CircleAvatar(
+                            child: Text(jogo[2]),
+                            radius: 80,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+              Container(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Container(
+                      child: Text('Jogada do computador'),
+                      padding: EdgeInsets.all(50),
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        CircleAvatar(
+                          child: Text(jogadaPc),
+                          radius: 80,
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+              Container(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Container(
+                      child: Text('resultado'),
+                      padding: EdgeInsets.all(50),
+                    ),
+                    Container(
+                      child: Text(resultado),
+                      padding: EdgeInsets.all(5),
+                    ),
+                  ],
+                ),
+              ),
+              Container(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Container(
+                      child: Text('Placar'),
+                      padding: EdgeInsets.all(20),
+                    ),
+                    Container(
+                      width: 400,
+                      height: 200,
+                      decoration: BoxDecoration(
+                          color: Colors.grey[400],
+                          borderRadius: BorderRadius.circular(70)),
+                      child: Column(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
-                            Text('Voce'),
-                            Text('PC'),
-                          ],
-                        ),
-                        Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: [
-                              Text(
-                                contVc.toString(),
-                                style: TextStyle(
-                                  fontSize: 60,
-                                ),
-                              ),
-                              Text(
-                                contPc.toString(),
-                                style: TextStyle(
-                                  fontSize: 60,
-                                ),
-                              ),
-                            ])
-                      ]),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: [
+                                Text('Voce'),
+                                Text('PC'),
+                              ],
+                            ),
+                            Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceEvenly,
+                                children: [
+                                  Text(
+                                    contVc.toString(),
+                                    style: TextStyle(
+                                      fontSize: 60,
+                                    ),
+                                  ),
+                                  Text(
+                                    contPc.toString(),
+                                    style: TextStyle(
+                                      fontSize: 60,
+                                    ),
+                                  ),
+                                ])
+                          ]),
+                    ),
+                  ],
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
-        ],
-      ),
-    );
+        ));
   }
 }
