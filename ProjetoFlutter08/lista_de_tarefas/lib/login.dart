@@ -19,7 +19,7 @@ class _LoginState extends State<Login> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Navegação'),
+        title: Text('Faça o Login'),
       ),
       body: Container(
         padding: EdgeInsets.all(30),

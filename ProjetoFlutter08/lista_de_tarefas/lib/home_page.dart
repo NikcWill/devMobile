@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
+import 'package:lista_de_tarefas/historyDel.dart';
 import 'package:lista_de_tarefas/login.dart';
 
 class Home extends StatefulWidget {
   String nomeUsuario;
-
+  
   Home({super.key, required this.nomeUsuario});
 
   @override
@@ -13,6 +14,8 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  
+  List listaDelete =[];
   List tarefas = ['Estudar', 'Ir para academia', 'Jogar'];
   TextEditingController _nomeTarefa = TextEditingController();
 
@@ -20,15 +23,33 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return Scaffold(
       drawer: Drawer(
-        child: ListView(children: [
-          UserAccountsDrawerHeader(
-            accountName: Text(widget.nomeUsuario),
-            accountEmail: Text(''),
-            currentAccountPicture: CircleAvatar(
-              child: Text(widget.nomeUsuario[0]),
+        child: ListView(
+          children: [
+            UserAccountsDrawerHeader(
+              accountName: Text(widget.nomeUsuario),
+              accountEmail: Text(''),
+              currentAccountPicture: CircleAvatar(
+                child: Text(widget.nomeUsuario[0].toUpperCase()),
+              ),
             ),
-          ),
-        ]),
+            Container(
+              padding: EdgeInsets.all(50),
+              child: ElevatedButton(
+                  onPressed: () {
+                    print(listaDelete);
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => HistoryDel(historico: listaDelete.toList()),
+                        
+                      ),);
+                      
+                  },
+                  child: Text('Histórico de excluidos'),
+              ),
+            ),
+          ],
+        ),
       ),
       appBar: AppBar(
         title: Text('To do List'),
@@ -45,7 +66,9 @@ class _HomeState extends State<Home> {
               trailing: IconButton(
                 onPressed: () {
                   setState(() {
+                    listaDelete.add(tarefas[index]);
                     tarefas.removeAt(index);
+                    print(listaDelete);
                   });
                   ScaffoldMessenger.of(context).showSnackBar(
                     SnackBar(
@@ -103,8 +126,10 @@ class _HomeState extends State<Home> {
                     ),
                   ],
                 );
-              });
+              },
+              );
         },
+        
         child: Icon(Icons.add),
       ),
     );
