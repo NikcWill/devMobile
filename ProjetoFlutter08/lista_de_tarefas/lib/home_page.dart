@@ -6,8 +6,9 @@ import 'package:lista_de_tarefas/login.dart';
 
 class Home extends StatefulWidget {
   String nomeUsuario;
+  List restauradas;
   
-  Home({super.key, required this.nomeUsuario});
+  Home({super.key, required this.nomeUsuario, this.restauradas});
 
   @override
   State<Home> createState() => _HomeState();
@@ -36,8 +37,8 @@ class _HomeState extends State<Home> {
               padding: EdgeInsets.all(50),
               child: ElevatedButton(
                   onPressed: () {
-                    print(listaDelete);
-                    Navigator.pushReplacement(
+                    print();
+                    Navigator.push(
                       context,
                       MaterialPageRoute(
                         builder: (context) => HistoryDel(historico: listaDelete.toList()),
@@ -45,7 +46,7 @@ class _HomeState extends State<Home> {
                       ),);
                       
                   },
-                  child: Text('Histórico de excluidos'),
+                  child: Text('Lixeira'),
               ),
             ),
           ],
@@ -68,12 +69,11 @@ class _HomeState extends State<Home> {
                   setState(() {
                     listaDelete.add(tarefas[index]);
                     tarefas.removeAt(index);
-                    print(listaDelete);
                   });
                   ScaffoldMessenger.of(context).showSnackBar(
                     SnackBar(
                       content: Text('Tarefa deletada!!!'),
-                      duration: Duration(seconds: 5),
+                      duration: Duration(seconds: 2),
                     ),
                   );
                 },
@@ -89,6 +89,7 @@ class _HomeState extends State<Home> {
         height: 40,
         shape: CircularNotchedRectangle(),
       ),
+      
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: FloatingActionButton(
         mini: true,
@@ -129,6 +130,7 @@ class _HomeState extends State<Home> {
               },
               );
         },
+        
         
         child: Icon(Icons.add),
       ),

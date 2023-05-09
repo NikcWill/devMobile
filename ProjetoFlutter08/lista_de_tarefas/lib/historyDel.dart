@@ -13,14 +13,22 @@ class HistoryDel extends StatefulWidget {
   State<HistoryDel> createState() => _HistoryDelState();
 }
 
+TextEditingController _historico = TextEditingController();
+
 class _HistoryDelState extends State<HistoryDel> {
+
+  List listaRest = [];
   @override
   Widget build(BuildContext context) {
     
-    return Scaffold(appBar: AppBar(
-        title: Text('To do List'),
+    return Scaffold(
+      
+      appBar: AppBar(
+        title: Text('Lixeira'),
         centerTitle: true,
-      ),
+        
+        ),
+      
       body: Container(
         padding: EdgeInsets.all(10),
         child: ListView.builder(
@@ -32,16 +40,19 @@ class _HistoryDelState extends State<HistoryDel> {
               trailing: IconButton(
                 onPressed: () {
                   setState(() {
-                    
+                    listaRest.add(widget.historico[index]);
+                    widget.historico.removeAt(index);
+                    print(listaRest);
+                                        
                   });
                   ScaffoldMessenger.of(context).showSnackBar(
                     SnackBar(
-                      content: Text('Tarefa deletada!!!'),
-                      duration: Duration(seconds: 5),
+                      content: Text('Tarefa restaurada'),
+                      duration: Duration(seconds: 2),
                     ),
                   );
                 },
-                icon: Icon(Icons.delete),
+                icon: Icon(Icons.restore),
               ),
               leading: Text('leading'),
             );
