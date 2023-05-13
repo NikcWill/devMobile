@@ -6,17 +6,18 @@ import 'package:lista_de_tarefas/login.dart';
 
 class Home extends StatefulWidget {
   String nomeUsuario;
-  List restauradas;
-  
-  Home({super.key, required this.nomeUsuario, this.restauradas});
+
+  Home({
+    super.key,
+    required this.nomeUsuario,
+  });
 
   @override
   State<Home> createState() => _HomeState();
 }
 
 class _HomeState extends State<Home> {
-  
-  List listaDelete =[];
+  List listaDelete = [];
   List tarefas = ['Estudar', 'Ir para academia', 'Jogar'];
   TextEditingController _nomeTarefa = TextEditingController();
 
@@ -36,17 +37,16 @@ class _HomeState extends State<Home> {
             Container(
               padding: EdgeInsets.all(50),
               child: ElevatedButton(
-                  onPressed: () {
-                    print();
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => HistoryDel(historico: listaDelete.toList()),
-                        
-                      ),);
-                      
-                  },
-                  child: Text('Lixeira'),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) =>
+                          HistoryDel(historico: listaDelete.toList()),
+                    ),
+                  );
+                },
+                child: Text('Lixeira'),
               ),
             ),
           ],
@@ -89,49 +89,46 @@ class _HomeState extends State<Home> {
         height: 40,
         shape: CircularNotchedRectangle(),
       ),
-      
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: FloatingActionButton(
         mini: true,
         onPressed: () {
           showDialog(
-              context: context,
-              builder: (context) {
-                return AlertDialog(
-                  title: Text('Adicionar Tarefa'),
-                  content: TextField(
-                    controller: _nomeTarefa,
-                  ),
-                  actions: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        ElevatedButton(
-                          onPressed: () {
-                            setState(() {
-                              tarefas.add(_nomeTarefa.text);
-                              _nomeTarefa.clear();
-                            });
-                            Navigator.pop(context);
-                          },
-                          child: Text('Adicionar'),
-                        ),
-                        ElevatedButton(
-                          onPressed: () {
-                            Navigator.pop(context);
+            context: context,
+            builder: (context) {
+              return AlertDialog(
+                title: Text('Adicionar Tarefa'),
+                content: TextField(
+                  controller: _nomeTarefa,
+                ),
+                actions: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      ElevatedButton(
+                        onPressed: () {
+                          setState(() {
+                            tarefas.add(_nomeTarefa.text);
                             _nomeTarefa.clear();
-                          },
-                          child: Text('Cancelar'),
-                        ),
-                      ],
-                    ),
-                  ],
-                );
-              },
+                          });
+                          Navigator.pop(context);
+                        },
+                        child: Text('Adicionar'),
+                      ),
+                      ElevatedButton(
+                        onPressed: () {
+                          Navigator.pop(context);
+                          _nomeTarefa.clear();
+                        },
+                        child: Text('Cancelar'),
+                      ),
+                    ],
+                  ),
+                ],
               );
+            },
+          );
         },
-        
-        
         child: Icon(Icons.add),
       ),
     );
