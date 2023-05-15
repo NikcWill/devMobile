@@ -16,6 +16,70 @@ class _ServicosPageState extends State<ServicosPage> {
       appBar: AppBar(
         title: Text('Serviços'),
       ),
+
+      body: Container(
+        child: Column(
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Container(
+                  padding: EdgeInsets.all(10),
+                  child: Image.asset("assets/imagens/detalhe_servico.png"),
+                ),
+                Container(
+                  padding: EdgeInsets.all(10),
+                  child: Text(
+                    "Sobre a empresa",
+                    style: TextStyle(fontSize: 30),
+                  ),
+                ),
+              ],
+            ),
+            Container(
+              
+              child:Column(
+                children: [
+                  Container(
+                    padding: EdgeInsets.all(20),
+                    child: Row(
+                      children: [
+                        Text("Consultoria",
+                            style: TextStyle(fontSize: 20),),
+                      ],
+                                   ),
+                  ),
+                 Container(
+                  padding: EdgeInsets.all(20),
+                   child: Row(
+                      children: [
+                        Text("Cálculo de preços",
+                            style: TextStyle(fontSize: 20),),
+                      ],
+                   ),
+                 ),
+                 Container(
+                  padding: EdgeInsets.all(20),
+                   child: Row(
+                      children: [
+                        Text("Acompanhamento de projetos",
+                            style: TextStyle(fontSize: 20),),
+                      ],
+                   ),
+                 ),
+                 
+                ],
+              ),),
+                  
+                  
+                    
+                     
+                  
+                
+            
+      ],
+      ),),
+    
     );
   }
 }

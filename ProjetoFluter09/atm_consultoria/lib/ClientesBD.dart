@@ -1,4 +1,5 @@
-List Clientes = [
+class ClienteDB{
+  static var clientes = [
   {
     "users": [
       {
@@ -1595,4 +1596,6 @@ List Clientes = [
     "skip": 0,
     "limit": 30
   }
-];
+];}
+
+
