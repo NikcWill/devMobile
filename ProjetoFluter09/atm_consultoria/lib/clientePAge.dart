@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:atm_consultoria/empresaPage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -15,18 +17,29 @@ class ClientePage extends StatefulWidget {
 
 class _ClientePageState extends State<ClientePage> {
 
-var clineteDB = ClienteDB.clientes[0]['users'];
+void listaNomes(){
+  for (int i=0; i < clienteDB.length; i++){
+      print(clienteDB[i]['firstName']);
+      }
+}
 
-  
+
+
+var clienteDB = ClienteDB.clientes[0]['users'];
+
   @override
   Widget build(BuildContext context) {
+    
     return Scaffold(
       appBar: AppBar(
         title: Text('Clientes'),
       ),
       body: Container(
           child: ElevatedButton(
-                        onPressed: () {print(clineteDB);
+                        onPressed: () {
+                          print(this.clienteDB.length);
+                          this.listaNomes();
+                                                  
                           },child: Text("clicar"),
 
        

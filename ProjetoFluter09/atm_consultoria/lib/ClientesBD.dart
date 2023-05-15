@@ -1,5 +1,5 @@
 class ClienteDB{
-  static var clientes = [
+  static List<Map<String, dynamic>> clientes = [
   {
     "users": [
       {
