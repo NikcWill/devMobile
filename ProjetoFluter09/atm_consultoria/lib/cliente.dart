@@ -31,12 +31,18 @@ class _ClienteInfState extends State<ClienteInf> {
             Center(
               child: Container(
                 padding: EdgeInsets.all(15),
-                color: Colors.amber,
                 child:        
                 Image.network(clienteDB[widget.idUsuario]['image']),
               ),
             ),
             Text(clienteDB[widget.idUsuario]['firstName'] +' ' + clienteDB[widget.idUsuario]['lastName']),
+            Text(clienteDB[widget.idUsuario]['phone']),
+            Text(clienteDB[widget.idUsuario]['email']),
+            Text(clienteDB[widget.idUsuario]['address']['city']),
+            Text(clienteDB[widget.idUsuario]['address']['address']),
+            Text(clienteDB[widget.idUsuario]['company']['department']),
+            Text(clienteDB[widget.idUsuario]['bank']['cardType']),
+            
           ],
             
           
