@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
+import 'package:flutter_application_1/api.dart';
 import 'secundPage.dart';
 
 class HomePage extends StatefulWidget {
@@ -34,42 +35,72 @@ class _HomePageState extends State<HomePage> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Container(
-                  padding: EdgeInsets.all(30),
-                  child: TextField(
-                    controller: _nome,
-                    decoration: InputDecoration(
-                      label: Text('Nome'),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10),
-                        borderSide: BorderSide(color: Colors.white),
-                      ),
-                      borderRadius: BorderRadius.circular(10),
-                      focusedBorder: BorderSide(color: Colors.white),
+                    child: Center(
+                      child: Image.asset('assets/imagens/imageHome.png',
+                        fit: BoxFit.contain,
+                        width: 140,
+                        height: 140,),
                     ),
-                  ),
                 ),
                 Container(
                   padding: EdgeInsets.all(30),
                   child: TextField(
-                    controller: _cidade,
+                    style: TextStyle(color: Colors.white),
+                    controller: _nome,
                     decoration: InputDecoration(
-                        label: Text('Nome da Cidade'),
-                        border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(10))),
+                      enabledBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.white),
+                        borderRadius: BorderRadius.circular(10)
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.white),
+                        borderRadius: BorderRadius.circular(10)
+                      ),
+                      label: Text('Nome', style: 
+                        TextStyle(color: Colors.white),
+                      ),
+                    ),
                   ),
                 ),
-                SizedBox(height: 10),
-                ElevatedButton(
+              
+                Container(
+                  padding: EdgeInsets.all(30),
+                  child: TextField(
+                    style: TextStyle(color: Colors.white),
+                    controller: _cidade,
+                    decoration: InputDecoration(
+                        enabledBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.white),
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.white),
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        label: Text('Nome da Cidade', style: 
+                          TextStyle(color: Colors.white),),
+                    ),  
+                  ),
+                ),
+                                                
+                  ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(30)
+                      )
+                    ),
                     onPressed: () {
                       userCidade.add(_nome.text);
                       userCidade.add(_cidade.text);
+                      getAPI(_cidade.text);
                       Navigator.pushReplacement(
                           context,
                           MaterialPageRoute(
                               builder: (context) => SegundaPage()));
-                      print(userCidade.toString());
+                                 
                     },
-                    child: Text('Consultar temperatura'))
+                    child: Text('Consultar temperatura', style: 
+                          TextStyle(color: Colors.white),))
               ],
             )));
   }

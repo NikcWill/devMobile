@@ -25,75 +25,115 @@ class _SegundaPageState extends State<SegundaPage> {
           Color.fromARGB(255, 94, 197, 223),
         ])),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.start,
           children: [
             Container(
-              child: Text('Olá! Nome'),
-            ),
-            Container(
               padding: EdgeInsets.all(30),
-              child: TextField(
-                controller: _cidade2,
-                decoration: InputDecoration(
-                    label: Text('Nome da Cidade'),
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10))),
+              child: Text('Olá! Nome',
+               style: TextStyle(color: Colors.white, fontSize: 30),
               ),
             ),
-            SizedBox(height: 10),
-            ElevatedButton(
-                onPressed: () {}, child: Text('Consultar temperatura')),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
+            Container(
+                  padding: EdgeInsets.all(20),
+                  child: TextField(
+                    style: TextStyle(color: Colors.white),
+                    controller: _cidade2,
+                    decoration: InputDecoration(
+                        enabledBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.white),
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.white),
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        label: Text('Nome da Cidade', style: 
+                          TextStyle(color: Colors.white),),
+                    ),  
+                  ),
+                ),
+                
+                ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(30)
+                      )
+                    ),
+                    onPressed: () {                          
+                    },
+                    child: Text('Consultar temperatura', style: 
+                          TextStyle(color: Colors.white, fontSize: 15),
+                          
+                          
+                    ),
+                ),
+
+                Container(
+                  height: 80,
+                ),
+              
                 Container(
                   padding: EdgeInsets.all(30),
                   child: Column(
                     children: [
-                      Row(
-                        children: [
-                          Text('Cidade'),
-                        ],
+                      Container(
+                        padding: EdgeInsets.all(15),
+                        height: 60,
+                        child:
+                          Text('Cidade', style: TextStyle(fontSize: 30, color: Colors.white),),
                       ),
-                      Row(
-                        children: [
-                          Text('Clima'),
-                        ],
+                     
+                      Container(
+                        child:
+                        Text('Clima', style: TextStyle(fontSize: 20, color: Colors.white),),
                       ),
-                      Row(
-                        children: [
+                      Container(
+                        padding: EdgeInsets.all(30),
+                        child:
                           CircleAvatar(
                             child: Text(
-                              '18°',
-                              style: TextStyle(fontSize: 70),
+                              'imagem',
+                              style: TextStyle(fontSize: 30),
                             ),
                             radius: 70,
                           )
-                        ],
                       ),
-                      Row(
-                        children: [
-                          Text('Temp max e min'),
-                        ],
+                      Container(
+                        padding: EdgeInsets.all(40),
+                        child:
+                          CircleAvatar(
+                            child: Text(
+                              '18°',
+                              style: TextStyle(fontSize: 60),
+                            ),
+                            radius: 70,
+                          )
                       ),
-                      Row(
-                        children: [
-                          Text('prev chuva'),
-                        ],
+                      Container(
+                        padding: EdgeInsets.all(15),
+                        child: Text('Temp max e min', style: TextStyle(
+                          fontSize: 20, color: Colors.white),
+                        ),
                       ),
+                      Container(
+                        padding: EdgeInsets.all(15),
+                        child: 
+                        Text('prev chuva', style: TextStyle(
+                          fontSize: 20, color: Colors.white),),
+                      ),
+                       
                     ],
                   ),
                 ),
-              ],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
+                
+            
                 Container(
-                  child: Text('ultima pesquisa'),
-                )
-              ],
-            ),
+                  child: Text('ultima pesquisa', style: TextStyle(
+                    fontSize: 20, color: Colors.white),
+                  ),),
+                
+              
+            
           ],
         ),
       ),
