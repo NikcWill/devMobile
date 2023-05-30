@@ -3,7 +3,9 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 
 class SegundaPage extends StatefulWidget {
-  const SegundaPage({super.key});
+  List userCidade2;
+  
+  SegundaPage({super.key, required this.userCidade2});
 
   @override
   State<SegundaPage> createState() => _SegundaPageState();
@@ -29,10 +31,11 @@ class _SegundaPageState extends State<SegundaPage> {
           children: [
             Container(
               padding: EdgeInsets.all(30),
-              child: Text('Olá! Nome',
+              child: Text('Olá! ${widget.userCidade2[0][0].toUpperCase() + widget.userCidade2[0].substring(1)}',
                style: TextStyle(color: Colors.white, fontSize: 30),
               ),
-            ),
+              ),
+            
             Container(
                   padding: EdgeInsets.all(20),
                   child: TextField(
@@ -80,7 +83,8 @@ class _SegundaPageState extends State<SegundaPage> {
                         padding: EdgeInsets.all(15),
                         height: 60,
                         child:
-                          Text('Cidade', style: TextStyle(fontSize: 30, color: Colors.white),),
+                          Text(widget.userCidade2[1][0].toUpperCase() + widget.userCidade2[1].substring(1), 
+                          style: TextStyle(fontSize: 30, color: Colors.white),),
                       ),
                      
                       Container(
@@ -130,7 +134,7 @@ class _SegundaPageState extends State<SegundaPage> {
                 Container(
                   child: Text('ultima pesquisa', style: TextStyle(
                     fontSize: 20, color: Colors.white),
-                  ),),
+                  ),)
                 
               
             

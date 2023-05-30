@@ -90,13 +90,16 @@ class _HomePageState extends State<HomePage> {
                       )
                     ),
                     onPressed: () {
-                      userCidade.add(_nome.text);
-                      userCidade.add(_cidade.text);
-                      getAPI(_cidade.text);
+                      userCidade.add(_nome.text.toLowerCase());
+                      userCidade.add(_cidade.text.toLowerCase());
+                      print(userCidade);
                       Navigator.pushReplacement(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => SegundaPage()));
+                              builder: (context) => 
+                              SegundaPage(userCidade2: userCidade.toList()),
+                          ),
+                      );
                                  
                     },
                     child: Text('Consultar temperatura', style: 
