@@ -1,16 +1,30 @@
-# flutter_application_1
+tela 2
+app bar
+folder hedaer
+categoria em lista slide 
+popular lista de comidas em slid
+no footer
 
-A new Flutter project.
 
-## Getting Started
+ao clicar no hamburguer 
 
-This project is a starting point for a Flutter application.
+abre page 3
 
-A few resources to get you started if this is your first Flutter project:
+detalhes do prato escolhido
+adicionar ao favoritos
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+page 4
+
+lista de favoritos
+imagem
+nome
+
+page 5
+lista de itens 
+imagem
+nome 
+valor 
+quantidade
+
+soma total
