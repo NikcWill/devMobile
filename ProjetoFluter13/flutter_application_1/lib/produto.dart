@@ -6,13 +6,13 @@ import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:flutter_application_1/homePage.dart';
 import 'package:flutter_application_1/produtosDB.dart';
 import 'package:flutter_application_1/secondPage.dart';
+import 'package:flutter_application_1/secondPage.dart';
 
 
 class Produto extends StatefulWidget {
 int idComida;
-bool? favorito;
 
-   Produto({Key? key, required this.idComida, this.favorito}): super(key: key);
+  Produto({super.key, required this.idComida,});
    
 
   @override
@@ -41,9 +41,10 @@ bool isFavorite = false;
             ),
             onPressed: () {
               produtoEscolhido[widget.idComida]['favorito'] = true;
-              SecundPage.favorito = isFavorite;
+              
               isFavorite = produtoEscolhido[widget.idComida]['favorito'];
-              print(isFavorite);
+
+                
               setState(() {
                 produtoEscolhido[widget.idComida]['favorito'] = !produtoEscolhido[widget.idComida]['favorito'];
               });
@@ -160,24 +161,25 @@ bool isFavorite = false;
                               context,
                               SecundPage(
                                 usuario: usuario,
-                                idProdescolhido: widget.idComida - 1,
-                                idFavorito: isFavorite ? widget.idComida - 1 : null
-                                ),
+                               
+                               ),
                             );
-                            SecundPage.favoritos.add(produtoEscolhido);
+                            SecundPage.carrinho.add(produtoEscolhido[widget.idComida - 1]);
                             print(produtoEscolhido[widget.idComida - 1]);
                             print(isFavorite);
+                            
+                            
                           },
-                          style: ButtonStyle(
-                minimumSize: MaterialStateProperty.all(
-                  Size(600, 50),
-                ),
-                shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                  RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10.0),
-                  ),
-                ),
-              ),
+                                      style: ButtonStyle(
+                            minimumSize: MaterialStateProperty.all(
+                              Size(600, 50),
+                            ),
+                            shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                              RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(10.0),
+                              ),
+                            ),
+                          ),
                           child: Text('Adionar ao carrinho'),
                         ),
                       ),

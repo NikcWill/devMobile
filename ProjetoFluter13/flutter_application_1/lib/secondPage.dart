@@ -8,16 +8,12 @@ import 'package:flutter_application_1/produto.dart';
 import 'package:flutter_application_1/produtosDB.dart';
 
 
-
 class SecundPage extends StatefulWidget {
   dynamic usuario;
-  int? idFavorito;
-  int? idProdescolhido;
-  bool? favorito;
-  List favoritos = [];
-  List carrinho = [];
-
-  SecundPage({Key? key, required this.usuario, this.idFavorito, this.idProdescolhido}) : super(key: key);
+ static List<Object>? carrinho =[];
+  
+      
+  SecundPage({super.key, required this.usuario});
 
   @override
   State<SecundPage> createState() => _SecundPageState();
@@ -25,8 +21,15 @@ class SecundPage extends StatefulWidget {
 
 class _SecundPageState extends State<SecundPage> {
 
+var produtoEscolhido1 = ProdutosDB.produto[0]['comidas'];
+
+List carroDeCompra = [];
 
 
+PageController _pagecontroller = PageController();
+
+  int active = 0;
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -80,7 +83,9 @@ class _SecundPageState extends State<SecundPage> {
                                 ),
                               ),
                               SizedBox(height: 20.0),
-                              ElevatedButton(onPressed: (){},
+                              ElevatedButton(onPressed: (){
+                               print(widget.carrinho);
+                              },
                                 style: ButtonStyle(
                                   backgroundColor: MaterialStateProperty.all<Color>(Colors.red),
                                   shape: MaterialStateProperty.all<RoundedRectangleBorder>(
@@ -295,8 +300,16 @@ class _SecundPageState extends State<SecundPage> {
             ],
           ),
         ), bottomNavigationBar: BottomNavigationBar(
-        // currentIndex: _selectedIndex,
-        // onTap: _onItemTapped,
+        type: BottomNavigationBarType.fixed,
+        currentIndex: active,
+        onTap: (value) {
+            
+          _pagecontroller.animateToPage(value,
+              duration: Duration(milliseconds: 300), curve: Curves.ease);
+          setState(() {
+            active = value;
+          });
+        },
         items: [
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
@@ -308,7 +321,7 @@ class _SecundPageState extends State<SecundPage> {
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.shopping_cart),
-            label: 'Carrinho',
+            label: 'Carrinho',            
           ),
         ],
       ),);
