@@ -1,3 +1,5 @@
+import 'dart:html';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
@@ -19,10 +21,32 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Center(child: Text("NeedFood")),
-      ),
-      body: Container(
+        
+      title: Text("NeedFood"),
+      centerTitle: true,),
+      
+     
+      body: Stack(
+        fit: StackFit.expand,children: [
+          Container(
+            
+
+        ),
+        Container(child: Image.asset('assets/imagens/backGround.png',fit: BoxFit.contain,
+        )),
+
+        Column(
+        children: [
+          SizedBox(height: 16.0),
+          Container(
+          color: Colors.green,  
+          width: 300,
+          height: 300,
+          child: Image.asset('assets/imagens/logotipo.png', width: 300, height: 300, fit: BoxFit.scaleDown)),
+          
+          Container(
         padding: EdgeInsets.all(20),
+        
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -39,6 +63,8 @@ class _HomePageState extends State<HomePage> {
                 ),
                 hintText: 'Login',
                 prefixIcon: Icon(Icons.person),
+                filled: true, 
+                fillColor: Colors.white,
               ),
             ),
             SizedBox(height: 16.0),
@@ -48,7 +74,9 @@ class _HomePageState extends State<HomePage> {
                     borderRadius: BorderRadius.circular(10.0),
                   ),
                   hintText: 'Senha',
-                  prefixIcon: Icon(Icons.lock)),
+                  prefixIcon: Icon(Icons.lock),
+                  filled: true, 
+                  fillColor: Colors.white,),
               obscureText: true,
             ),
             SizedBox(height: 16.0),
@@ -61,7 +89,7 @@ class _HomePageState extends State<HomePage> {
                     builder: (context) => SecundPage(usuario: usuario),
                   ),
                 );
-                print(usuario);
+            
               },
               style: ButtonStyle(
                 minimumSize: MaterialStateProperty.all(
@@ -78,6 +106,13 @@ class _HomePageState extends State<HomePage> {
           ],
         ),
       ),
+        ],
+      ),
+      ],
+
+
+      ), 
+      
     );
   }
 }

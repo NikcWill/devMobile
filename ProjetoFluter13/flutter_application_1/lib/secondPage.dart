@@ -1,18 +1,32 @@
+import 'dart:html';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:flutter_application_1/homePage.dart';
+import 'package:flutter_application_1/produto.dart';
+import 'package:flutter_application_1/produtosDB.dart';
+
+
 
 class SecundPage extends StatefulWidget {
-  var usuario;
+  dynamic usuario;
+  int? idFavorito;
+  int? idProdescolhido;
+  bool? favorito;
+  List favoritos = [];
+  List carrinho = [];
 
-  SecundPage({super.key, required this.usuario});
+  SecundPage({Key? key, required this.usuario, this.idFavorito, this.idProdescolhido}) : super(key: key);
 
   @override
   State<SecundPage> createState() => _SecundPageState();
 }
 
 class _SecundPageState extends State<SecundPage> {
+
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,7 +37,7 @@ class _SecundPageState extends State<SecundPage> {
           child: Column(
             children: [
               Container(
-                padding: EdgeInsets.all(15),
+                margin: EdgeInsets.only(left: 15, right: 15, top: 10, bottom: 0),
                 child: TextField(
                   decoration: InputDecoration(
                     border: OutlineInputBorder(
@@ -35,53 +49,268 @@ class _SecundPageState extends State<SecundPage> {
                 ),
               ),
               Container(
-                margin: EdgeInsets.all(15),
-                width: 600,
+                margin: EdgeInsets.only(left: 15, right: 15, top: 0, bottom: 0),
+                width: double.infinity,
                 height: 150,
-                color: Colors.blue,
+                child: Stack( 
+                  children:[ 
+                    Positioned(
+                      top: 0,
+                      child: 
+                        Image.asset('assets/imagens/banner.png',
+                          fit: 
+                            BoxFit.fill
+                          ),
+                    ),
+                    Positioned(
+                      top: 0,
+                      child: Container(
+                       padding: EdgeInsets.all(15),
+                        child: Container(
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children:[
+                              SizedBox(height: 16.0),
+                              Text(
+                                'Poket Cheese \nBurguer komplit',
+                                style: TextStyle(
+                                  fontFamily: AutofillHints.addressState,
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              SizedBox(height: 20.0),
+                              ElevatedButton(onPressed: (){},
+                                style: ButtonStyle(
+                                  backgroundColor: MaterialStateProperty.all<Color>(Colors.red),
+                                  shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                                    RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(10.0),
+                                    ),
+                                  ),
+                                ), 
+                                child: Text(' Order Now'),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                  ]
+                ),
               ),
               Container(
-                margin: EdgeInsets.all(10),
                 width: double.infinity,
-                height: 170,
-                color: Colors.green,
-                child: Text("Categorias"),
+                height: 130,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children:[
+                    Container(
+                      margin: EdgeInsets.only(left: 25, right: 0, top: 10, bottom: 0),
+                      child: Text("Categorias",
+                        style: TextStyle(
+                          fontFamily: AutofillHints.addressState,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 15,
+                        ),
+                      ),
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Container(
+                          child:
+                            Image.asset('assets/imagens/burgerCat.png', width: 100, height: 100,),
+                        ),
+                        Container(                      
+                          child:
+                            Image.asset('assets/imagens/coffe.png', width: 100, height: 100,),
+                        ),
+                        Container(
+                          child:
+                            Image.asset('assets/imagens/pizzaCat.png', width: 100, height: 100,),
+                        ),
+                      ],
+                    )
+                  ],
+                ) 
               ),
               Container(
                 width: double.infinity,
                 height: 200,
-                child: ListView(
-                  scrollDirection: Axis.horizontal,
-                  children: [
+                child: Stack(
+                  children:[
                     Container(
-                      margin: EdgeInsets.all(10),
-                      width: 300,
-                      height: 200,
-                      color: Colors.blue,
+                      margin: EdgeInsets.only(left: 25, right: 0, top: 0, bottom: 10),
+                      child: Text("Popular Now",
+                        style: TextStyle(
+                          fontFamily: AutofillHints.addressState,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 15,
+                        ),
+                      ),
                     ),
                     Container(
-                      margin: EdgeInsets.all(10),
-                      width: 300,
-                      height: 200,
-                      color: Colors.blue,
-                    ),
-                    Container(
-                      margin: EdgeInsets.all(10),
-                      width: 300,
-                      height: 200,
-                      color: Colors.blue,
-                    ),
-                    Container(
-                      margin: EdgeInsets.all(10),
-                      width: 300,
-                      height: 200,
-                      color: Colors.blue,
+                      margin: EdgeInsets.only(left: 15, right: 15, top: 30, bottom: 0),
+                      child: ListView(
+                        scrollDirection: Axis.horizontal,
+                        children: [
+                          GestureDetector(
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => Produto(idComida: 4,),
+                                ),
+                              );
+                            
+                            },
+                            child: Container(
+                              child: Image.asset('assets/imagens/pizza.png', width: 150, height: 150,),
+                            ),
+                          ),
+                          GestureDetector(
+                            onTap: () {
+                             Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => Produto(idComida: 1),
+                                ),
+                              );
+                            },
+                            child: Container(
+                              child: Image.asset('assets/imagens/burger.png', width: 150, height: 150,),
+                            ),
+                          ),
+                          GestureDetector(
+                            onTap: () {Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => Produto(idComida: 5),
+                                ),
+                              );
+                            },
+                            child: Container(
+                              child: Image.asset('assets/imagens/pizza.png', width: 150, height: 150,),
+                            ),
+                          ),
+                          GestureDetector(
+                            onTap: () {Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => Produto(idComida: 2),
+                                ),
+                              );
+                            },
+                            child: Container(
+                              child: Image.asset('assets/imagens/burger.png', width: 150, height: 150,),
+                            ),
+                          ),
+                        ],
+                      ),
                     )
                   ],
-                ),
-              )
+                ), 
+              ),
+              Container(
+                width: double.infinity,
+                height: 250,
+                child: Stack(
+                  children:[
+                    Container(
+                      margin: EdgeInsets.only(left: 25, right: 0, top: 25, bottom: 10),
+                      child: Text("Recommended",
+                        style: TextStyle(
+                          fontFamily: AutofillHints.addressState,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 15,
+                        ),
+                      ),
+                    ),
+                    Container(
+                      margin: EdgeInsets.only(left: 15, right: 15, top: 30, bottom: 0),
+                      child: ListView(
+                        scrollDirection: Axis.horizontal,
+                        children: [
+                          GestureDetector(
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => Produto(idComida: 3),
+                                ),
+                              );
+                            },
+                            child: Container(
+                              child: Image.asset('assets/imagens/burgerRec.png', width: 200, height: 200,),
+                            ),
+                          ),
+                          GestureDetector(
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => Produto(idComida: 6),
+                                ),
+                              );
+                            },
+                            child: Container(
+                              margin: EdgeInsets.only(left: 15, right: 15, top: 0, bottom: 0),
+                              child: Image.asset('assets/imagens/rap.png', width: 200, height: 200,),
+                            ),
+                          ),
+                          GestureDetector(
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => Produto(idComida: 3),
+                                ),
+                              );
+                            },
+                            child: Container(
+                              margin: EdgeInsets.only(left: 0, right: 15, top: 0, bottom: 0),
+                              child: Image.asset('assets/imagens/burgerRec.png', width: 200, height: 200,),
+                            ),
+                          ),
+                          GestureDetector(
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => Produto(idComida: 7),
+                                ),
+                              );
+                            },
+                            child: Container(
+                              child: Image.asset('assets/imagens/rap.png', width: 200, height: 200,),
+                            ),
+                          ),
+                        ],
+                      ),
+                    )
+                  ],
+                ), 
+              ),
             ],
           ),
-        ));
+        ), bottomNavigationBar: BottomNavigationBar(
+        // currentIndex: _selectedIndex,
+        // onTap: _onItemTapped,
+        items: [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: 'Home',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.favorite),
+            label: 'Favoritos',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.shopping_cart),
+            label: 'Carrinho',
+          ),
+        ],
+      ),);
   }
 }
