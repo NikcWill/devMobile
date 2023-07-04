@@ -167,6 +167,7 @@ bool isFavorite = false;
                                
                                ),
                             );
+                            produtoEscolhido[widget.idComida-1]["quantidade"] = produtoEscolhido[widget.idComida-1]["quantidade"]+1;
                             carroDeCompra.add(produtoEscolhido[widget.idComida - 1]);
                             print(produtoEscolhido[widget.idComida - 1]);
                             print(isFavorite);

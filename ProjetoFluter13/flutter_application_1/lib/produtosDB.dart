@@ -9,7 +9,8 @@ class ProdutosDB {
           "descricao": "Delicioso hambúrguer com carne suculenta, queijo derretido, alface fresca, tomate maduro e molho especial, tudo envolto em um pão macio e saboroso. Uma combinação perfeita para satisfazer seus desejos por hambúrgueres.",
           "foto": "assets/imagens/hamburger.png",
           "favorito": false,
-          "avaliacao": 4.5
+          "avaliacao": 4.5,
+          "quantidade": 0 
         },
         {
           "id": 2,
@@ -18,7 +19,8 @@ class ProdutosDB {
           "descricao": "Hambúrguer de grãos e vegetais frescos, acompanhado de queijo derretido, alface crocante e maionese vegana. Uma opção saudável e saborosa para os amantes de hambúrgueres vegetarianos.",
           "foto": "assets/imagens/hamburger.png",
           "favorito": false,
-          "avaliacao": 3.8
+          "avaliacao": 3.8,
+          "quantidade": 0 
         },
         {
           "id": 3,
@@ -27,7 +29,8 @@ class ProdutosDB {
           "descricao": "Hambúrguer com carne suculenta temperada com especiarias, queijo picante derretido, jalapeños picantes, cebola roxa crocante e molho barbecue defumado. Uma explosão de sabores para aqueles que gostam de um toque picante.",
           "foto": "assets/imagens/burgerRec.png",
           "favorito": false,
-          "avaliacao": 4.2
+          "avaliacao": 4.2,
+          "quantidade": 0 
         },
         {
           "id": 4,
@@ -36,7 +39,8 @@ class ProdutosDB {
           "descricao": "Uma pizza clássica italiana feita com molho de tomate caseiro, queijo mussarela fresco e folhas de manjericão perfumado. A simplicidade dos ingredientes e a perfeição da combinação fazem dessa pizza uma verdadeira obra de arte culinária.",
           "foto": "assets/imagens/pizza1.png",
           "favorito": false,
-          "avaliacao": 4.8
+          "avaliacao": 4.8,
+          "quantidade": 0 
         },
         {
           "id": 5,
@@ -45,7 +49,8 @@ class ProdutosDB {
           "descricao": "Uma deliciosa pizza com uma combinação irresistível de quatro queijos: mussarela, provolone, gorgonzola e parmesão. Cada mordida é uma explosão de sabores e texturas, tornando essa pizza um verdadeiro deleite para os amantes de queijo.",
           "foto": "assets/imagens/pizza1.png",
           "favorito": false,
-          "avaliacao": 4.6
+          "avaliacao": 4.6,
+          "quantidade": 0 
         },
         {
           "id": 6,
@@ -54,7 +59,8 @@ class ProdutosDB {
           "descricao": "Um rap delicioso com tiras de frango grelhado suculento, alface fresca, rodelas de tomate e um molho especial que adiciona um toque extra de sabor. Embalado em um pão macio e quentinho, é uma opção rápida e saborosa para uma refeição satisfatória.",
           "foto": "assets/imagens/rap.png",
           "favorito": false,
-          "avaliacao": 4.3
+          "avaliacao": 4.3,
+          "quantidade": 0 
         },
         {
           "id": 7,
@@ -63,7 +69,8 @@ class ProdutosDB {
           "descricao": "Um rap saboroso feito com carne de porco desfiada, cebola caramelizada, molho barbecue defumado e uma combinação de temperos que fazem desse sanduíche uma verdadeira delícia. Com texturas e sabores contrastantes, é uma opção perfeita para os amantes de carne de porco.",
           "foto": "assets/imagens/rap.png",
           "favorito": false,
-          "avaliacao": 4.1
+          "avaliacao": 4.1,
+          "quantidade": 0 
         }
       ]
     }

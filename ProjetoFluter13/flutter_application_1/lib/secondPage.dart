@@ -22,8 +22,9 @@ class SecundPage extends StatefulWidget {
 
 class _SecundPageState extends State<SecundPage> {
   
-  PageController _pageController = PageController();
   int active = 0;
+  
+  PageController _pageController = PageController();
 
   
   @override
@@ -32,7 +33,15 @@ class _SecundPageState extends State<SecundPage> {
         appBar: AppBar(
           title: Center(child: Text("Olá  ${this.widget.usuario}")),
         ),
-        body: Container(
+      body: PageView(
+      controller: _pageController,
+      onPageChanged: (index) {
+          setState(() {
+            active = index;
+          });
+        },
+        children: [
+        Container(
           child: Column(
             children: [
               Container(
@@ -296,36 +305,40 @@ class _SecundPageState extends State<SecundPage> {
             ],
           ),
         ), 
-        bottomNavigationBar: BottomNavigationBar(
-        type: BottomNavigationBarType.fixed,
-        currentIndex: active,
-        onTap: (value) {
-          _pageController.animateToPage(
-            value,
-            duration: Duration(milliseconds: 300),
-            curve: Curves.ease,
-          );
-          setState(() {
-            active = value;
-          });
-
-          
-        },
-        items: [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Home',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.favorite),
-            label: 'Favoritos',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.shopping_cart),
-            label: 'Carrinho',
-          ),
-        ],
-      ),
+        Favoritos(),
+        CarrinhoDeCompra(),
+     ],
+    ),
+    bottomNavigationBar: BottomNavigationBar(
+      type: BottomNavigationBarType.fixed,
+      currentIndex: active,
+      onTap: (value) {
+        _pageController.animateToPage(
+          value,
+          duration: Duration(milliseconds: 300),
+          curve: Curves.ease,
+        );
+        setState(() {
+          active = value;
+        });
+      },
+      items: [
+        BottomNavigationBarItem(
+          icon: Icon(Icons.home),
+          label: 'Home',
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.favorite),
+          label: 'Favoritos',
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.shopping_cart),
+          label: 'Carrinho',
+        ),
+      ],
+    )
+         
+        
     );
   }
 }
