@@ -3,11 +3,14 @@ import 'dart:js_util';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
+import 'package:flutter_application_1/carrinho.dart';
 import 'package:flutter_application_1/homePage.dart';
 import 'package:flutter_application_1/produtosDB.dart';
 import 'package:flutter_application_1/secondPage.dart';
 import 'package:flutter_application_1/secondPage.dart';
 
+List<dynamic> carroDeCompra = [];
+List<dynamic> favoritos = [];
 
 class Produto extends StatefulWidget {
 int idComida;
@@ -164,7 +167,7 @@ bool isFavorite = false;
                                
                                ),
                             );
-                            SecundPage.carrinho.add(produtoEscolhido[widget.idComida - 1]);
+                            carroDeCompra.add(produtoEscolhido[widget.idComida - 1]);
                             print(produtoEscolhido[widget.idComida - 1]);
                             print(isFavorite);
                             

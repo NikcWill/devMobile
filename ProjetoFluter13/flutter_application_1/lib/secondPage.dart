@@ -3,16 +3,17 @@ import 'dart:html';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
+import 'package:flutter_application_1/carrinho.dart';
 import 'package:flutter_application_1/homePage.dart';
+import 'package:flutter_application_1/listaFavoritos.dart';
 import 'package:flutter_application_1/produto.dart';
 import 'package:flutter_application_1/produtosDB.dart';
 
 
 class SecundPage extends StatefulWidget {
   dynamic usuario;
- static List<Object>? carrinho =[];
-  
-      
+
+    
   SecundPage({super.key, required this.usuario});
 
   @override
@@ -20,15 +21,10 @@ class SecundPage extends StatefulWidget {
 }
 
 class _SecundPageState extends State<SecundPage> {
-
-var produtoEscolhido1 = ProdutosDB.produto[0]['comidas'];
-
-List carroDeCompra = [];
-
-
-PageController _pagecontroller = PageController();
-
+  
+  PageController _pageController = PageController();
   int active = 0;
+
   
   @override
   Widget build(BuildContext context) {
@@ -84,7 +80,7 @@ PageController _pagecontroller = PageController();
                               ),
                               SizedBox(height: 20.0),
                               ElevatedButton(onPressed: (){
-                               print(widget.carrinho);
+                               print(carroDeCompra);
                               },
                                 style: ButtonStyle(
                                   backgroundColor: MaterialStateProperty.all<Color>(Colors.red),
@@ -299,16 +295,21 @@ PageController _pagecontroller = PageController();
               ),
             ],
           ),
-        ), bottomNavigationBar: BottomNavigationBar(
+        ), 
+        bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
         currentIndex: active,
         onTap: (value) {
-            
-          _pagecontroller.animateToPage(value,
-              duration: Duration(milliseconds: 300), curve: Curves.ease);
+          _pageController.animateToPage(
+            value,
+            duration: Duration(milliseconds: 300),
+            curve: Curves.ease,
+          );
           setState(() {
             active = value;
           });
+
+          
         },
         items: [
           BottomNavigationBarItem(
@@ -321,9 +322,10 @@ PageController _pagecontroller = PageController();
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.shopping_cart),
-            label: 'Carrinho',            
+            label: 'Carrinho',
           ),
         ],
-      ),);
+      ),
+    );
   }
 }

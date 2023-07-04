@@ -12,13 +12,17 @@ class CarrinhoDeCompra extends StatefulWidget {
 class _CarrinhoDeCompraState extends State<CarrinhoDeCompra> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    return Scaffold(
+              appBar: AppBar(
+                title: Text('Carrinho'),
+                centerTitle: true,
+              ),body: Container(
+                color: Colors.amber,
+              ),
+              
+    );
       
-    //   appBar: AppBar(
-    //     title: Text('Lixeira'),
-    //     centerTitle: true,
-        
-    //     ),
+      
       
     //   body: Container(
     //     padding: EdgeInsets.all(10),
