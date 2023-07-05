@@ -24,13 +24,54 @@ int idComida;
 
 class _ProdutoState extends State<Produto> {
 var produtoEscolhido = ProdutosDB.produto[0]['comidas'];
+bool isFavorito = false;
 
-bool isFavorite = false;
+ @override
+  void initState() {
+    super.initState();
+    verificarFavorito();
+    }
+
+  void verificarFavorito() {
+    var produtoEscolhidoAtual = produtoEscolhido[widget.idComida - 1];
+
+    if (favoritos.contains(produtoEscolhidoAtual)) {
+      setState(() {
+        isFavorito = true;
+      });
+    } else {
+      setState(() {
+        isFavorito = false;
+      });
+    }
+  }
+  void verificarCarrinho() {
+  var produtoEscolhidoAtual = produtoEscolhido[widget.idComida - 1];
+
+  for (var produto in carroDeCompra) {
+    if (produto['id'] == produtoEscolhidoAtual['id']) {
+      // O produto já está no carrinho, atualize apenas a quantidade
+      setState(() {
+        produto['quantidade']++; // Atualize a quantidade conforme necessário
+      });
+      return;
+    }
+  }
+
+  // Se o produto não estiver no carrinho, adicione-o com quantidade 1
+  setState(() {
+    produtoEscolhidoAtual['quantidade'] = 1;
+    carroDeCompra.add(produtoEscolhidoAtual);
+  });
+}
 
   
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
+
+
       extendBodyBehindAppBar: true,
       appBar: AppBar(
         backgroundColor: Colors.transparent,
@@ -40,18 +81,21 @@ bool isFavorite = false;
           IconButton(
             icon: Icon(
               Icons.favorite,
-              color: isFavorite ? Colors.red : Colors.grey,
+              color:  isFavorito? Colors.red : Colors.grey,
             ),
             onPressed: () {
               produtoEscolhido[widget.idComida]['favorito'] = true;
-              
-              isFavorite = produtoEscolhido[widget.idComida]['favorito'];
-
-                
+      
               setState(() {
-                produtoEscolhido[widget.idComida]['favorito'] = !produtoEscolhido[widget.idComida]['favorito'];
+                 isFavorito = !isFavorito;
               });
-            },
+               if (isFavorito) {
+                produtoEscolhido[widget.idComida - 1]['favorito'] = true;
+                favoritos.add(produtoEscolhido[widget.idComida - 1]);
+              } else {
+                produtoEscolhido[widget.idComida - 1]['favorito'] = false;
+                favoritos.remove(produtoEscolhido[widget.idComida - 1]);
+            };},
           ),
         ],
       ),
@@ -167,12 +211,14 @@ bool isFavorite = false;
                                
                                ),
                             );
-                            produtoEscolhido[widget.idComida-1]["quantidade"] = produtoEscolhido[widget.idComida-1]["quantidade"]+1;
-                            carroDeCompra.add(produtoEscolhido[widget.idComida - 1]);
-                            print(produtoEscolhido[widget.idComida - 1]);
-                            print(isFavorite);
-                            
-                            
+                            verificarCarrinho();
+                            ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                              content: Text('Produto adicionado ao carrinho'),
+                              duration: Duration(seconds: 1),
+                            ),
+                          );
+                          
                           },
                                       style: ButtonStyle(
                             minimumSize: MaterialStateProperty.all(

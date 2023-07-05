@@ -90,6 +90,8 @@ class _SecundPageState extends State<SecundPage> {
                               SizedBox(height: 20.0),
                               ElevatedButton(onPressed: (){
                                print(carroDeCompra);
+                               print('-------------');
+                               print(favoritos);
                               },
                                 style: ButtonStyle(
                                   backgroundColor: MaterialStateProperty.all<Color>(Colors.red),
