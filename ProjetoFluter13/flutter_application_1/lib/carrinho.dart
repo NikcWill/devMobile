@@ -63,6 +63,12 @@ class _CarrinhoDeCompraState extends State<CarrinhoDeCompra> {
                               _updateTotal();
                             }if(carroDeCompra[index]['quantidade'] == 0){
                               carroDeCompra.remove(produto);
+                              ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                              content: Text('$nome removido do carrinho'),
+                              duration: Duration(seconds: 1),
+                            ),
+                          );
                             }
                           });
                         },

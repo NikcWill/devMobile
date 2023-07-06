@@ -43,6 +43,12 @@ class _FavoritosState extends State<Favoritos> {
                         onPressed: () {
                           setState(() {
                             favoritos.remove(produto);
+                            ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                              content: Text('$nome removido do carrinho!'),
+                              duration: Duration(seconds: 1),
+                            ),
+                          );
                           });
                         },
                         icon: Icon(Icons.delete_sharp),
