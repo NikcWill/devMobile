@@ -31,7 +31,11 @@ class _SecundPageState extends State<SecundPage> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Center(child: Text("Olá  ${this.widget.usuario}")),
+          toolbarHeight: MediaQuery.of(context).size.height * 0.05,
+          title: Center(
+            child: Text("Olá  ${this.widget.usuario}",
+            ),
+          ),
         ),
       body: PageView(
       controller: _pageController,
@@ -40,40 +44,50 @@ class _SecundPageState extends State<SecundPage> {
             active = index;
           });
         },
-        children: [
+      children: [
         Container(
           child: Column(
             children: [
               Container(
-                margin: EdgeInsets.only(left: 15, right: 15, top: 10, bottom: 0),
-                child: TextField(
-                  decoration: InputDecoration(
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10.0),
+                    height: MediaQuery.of(context).size.height * 0.05,
+                    margin: EdgeInsets.only(left: 15, right: 15, top: 10, bottom: 0),
+                    child: TextField(
+                      decoration: InputDecoration(
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10.0),
+                        ),
+                        hintText: 'Pesquisar',
+                        suffixIcon: Icon(Icons.search),
+                        contentPadding: EdgeInsets.symmetric(horizontal: 10),
+                      ),
                     ),
-                    hintText: 'Pesquisar',
-                    suffixIcon: Icon(Icons.search),
-                  ),
-                ),
               ),
+              SizedBox(height: MediaQuery.of(context).size.width * 0.025),
               Container(
-                margin: EdgeInsets.only(left: 15, right: 15, top: 0, bottom: 0),
-                width: double.infinity,
-                height: 150,
+                color: Colors.blue,
+                //margin: EdgeInsets.only(left: 15, right: 15, top: 0, bottom: 0),
+                height: MediaQuery.of(context).size.height * 0.15,
                 child: Stack( 
+                  
                   children:[ 
                     Positioned(
+                      
                       top: 0,
                       child: 
                         Image.asset('assets/imagens/banner.png',
+                        height: MediaQuery.of(context).size.height * 0.25,
+                        width: MediaQuery.of(context).size.width * 0.8,
+                        
+                        
                           fit: 
                             BoxFit.fill
                           ),
                     ),
+                    
                     Positioned(
                       top: 0,
                       child: Container(
-                       padding: EdgeInsets.all(15),
+                        padding: EdgeInsets.all(MediaQuery.of(context).size.width * 0.025),
                         child: Container(
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
@@ -87,7 +101,7 @@ class _SecundPageState extends State<SecundPage> {
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
-                              SizedBox(height: 20.0),
+                              
                               ElevatedButton(onPressed: (){
                                print(carroDeCompra);
                                print('-------------');
@@ -311,33 +325,38 @@ class _SecundPageState extends State<SecundPage> {
         CarrinhoDeCompra(),
      ],
     ),
-    bottomNavigationBar: BottomNavigationBar(
-      type: BottomNavigationBarType.fixed,
-      currentIndex: active,
-      onTap: (value) {
-        _pageController.animateToPage(
-          value,
-          duration: Duration(milliseconds: 300),
-          curve: Curves.ease,
-        );
-        setState(() {
-          active = value;
-        });
-      },
-      items: [
-        BottomNavigationBarItem(
-          icon: Icon(Icons.home),
-          label: 'Home',
-        ),
-        BottomNavigationBarItem(
-          icon: Icon(Icons.favorite),
-          label: 'Favoritos',
-        ),
-        BottomNavigationBarItem(
-          icon: Icon(Icons.shopping_cart),
-          label: 'Carrinho',
-        ),
-      ],
+    bottomNavigationBar: SizedBox(
+      height: MediaQuery.of(context).size.height * 0.070,
+      child: BottomNavigationBar(
+        iconSize: MediaQuery.of(context).size.height * 0.025,
+        type: BottomNavigationBarType.fixed,
+        currentIndex: active,
+        onTap: (value) {
+          _pageController.animateToPage(
+            value,
+            duration: Duration(milliseconds: 300),
+            curve: Curves.ease,
+          );
+          setState(() {
+            active = value;
+          });
+        },
+        items: [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home,),
+            label: 'Home',
+            
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.favorite,),
+            label: 'Favoritos',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.shopping_cart,),
+            label: 'Carrinho',
+          ),
+        ],
+      ),
     )
          
         

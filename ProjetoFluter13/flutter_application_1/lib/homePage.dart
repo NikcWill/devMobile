@@ -21,98 +21,107 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        
-      title: Text("NeedFood"),
-      centerTitle: true,),
-      
-     
+        title: Text("NeedFood"),
+        centerTitle: true,
+      ),
       body: Stack(
-        fit: StackFit.expand,children: [
-          Container(
-            
-
-        ),
-        Container(child: Image.asset('assets/imagens/backGround.png',fit: BoxFit.contain,
-        )),
-
-        Column(
+        fit: StackFit.expand,
         children: [
-          SizedBox(height: 16.0),
           Container(
-          color: Colors.green,  
-          width: 300,
-          height: 300,
-          child: Image.asset('assets/imagens/logotipo.png', width: 300, height: 300, fit: BoxFit.scaleDown)),
-          
-          Container(
-        padding: EdgeInsets.all(20),
-        
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(
-              "Sing In",
-              style: TextStyle(fontSize: 25),
-            ),
-            SizedBox(height: 60.0),
-            TextField(
-              controller: _nome,
-              decoration: InputDecoration(
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(10.0),
-                ),
-                hintText: 'Login',
-                prefixIcon: Icon(Icons.person),
-                filled: true, 
-                fillColor: Colors.white,
+            padding: EdgeInsets.only(top: 230),
+            child: Expanded(
+              child: LayoutBuilder(
+                builder: (BuildContext context, BoxConstraints constraints) { 
+                  return Image.asset(
+                    'assets/imagens/backGround.png',
+                    fit: BoxFit.contain,
+                    width: MediaQuery.of(context).size.width,
+                    height: constraints.maxHeight,
+                  );
+                },
               ),
             ),
-            SizedBox(height: 16.0),
-            TextField(
-              decoration: InputDecoration(
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10.0),
-                  ),
-                  hintText: 'Senha',
-                  prefixIcon: Icon(Icons.lock),
-                  filled: true, 
-                  fillColor: Colors.white,),
-              obscureText: true,
-            ),
-            SizedBox(height: 16.0),
-            ElevatedButton(
-              onPressed: () {
-                usuario = _nome.text;
-                Navigator.pushReplacement(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => SecundPage(usuario: usuario),
-                  ),
-                );
-            
-              },
-              style: ButtonStyle(
-                minimumSize: MaterialStateProperty.all(
-                  Size(600, 50),
-                ),
-                shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                  RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10.0),
-                  ),
+          ),
+          Column(
+            children: [
+              SizedBox(height: 16.0),
+              Container(
+                color: Colors.green,
+                child: Image.asset(
+                  'assets/imagens/logotipo.png',
+                  width: 300,
+                  height: MediaQuery.of(context).size.height * 0.25,
+                  fit: BoxFit.scaleDown,
                 ),
               ),
-              child: Text('Login'),
-            ),
-          ],
-        ),
-      ),
+              Container(
+                padding: EdgeInsets.all(20), 
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      "Sing In",
+                        style: TextStyle(
+                          fontFamily: AutofillHints.addressState,
+                          fontSize: 35,
+                          fontWeight: FontWeight.bold,
+                        ),
+                    ),
+                    SizedBox(height: 60.0),
+                    TextField(
+                      controller: _nome,
+                      decoration: InputDecoration(
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10.0),
+                        ),
+                        hintText: 'Login',
+                        prefixIcon: Icon(Icons.person),
+                        filled: true, 
+                        fillColor: Colors.white,
+                      ),
+                    ),
+                    SizedBox(height: 16.0),
+                    TextField(
+                      decoration: InputDecoration(
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(10.0),
+                          ),
+                          hintText: 'Senha',
+                          prefixIcon: Icon(Icons.lock),
+                          filled: true, 
+                          fillColor: Colors.white,),
+                          obscureText: true,
+                    ),
+                    SizedBox(height: 16.0),
+                    ElevatedButton(
+                      onPressed: () {
+                        usuario = _nome.text;
+                        Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => SecundPage(usuario: usuario),
+                          ),
+                        );
+                      },
+                      style: ButtonStyle(
+                        minimumSize: MaterialStateProperty.all(
+                          Size(600, 50),
+                        ),
+                        shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                          RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10.0),
+                          ),
+                        ),
+                      ),
+                      child: Text('Login'),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
         ],
-      ),
-      ],
-
-
       ), 
-      
     );
   }
 }
