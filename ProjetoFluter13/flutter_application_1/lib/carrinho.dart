@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'produto.dart'; // Importe o arquivo onde as listas estão definidas
+import 'package:flutter_application_1/secondPage.dart';
+import 'homePage.dart';
+import 'produto.dart'; 
 
 class CarrinhoDeCompra extends StatefulWidget {
   const CarrinhoDeCompra({Key? key});
@@ -9,6 +11,8 @@ class CarrinhoDeCompra extends StatefulWidget {
 }
 
 class _CarrinhoDeCompraState extends State<CarrinhoDeCompra> {
+  String _metodoInicial = 'PIX';
+List<String> _foramasDePagamento = ['Débito', 'Crédito', 'PIX', 'Dinheiro'];
   double totalDaCompra = 0;
 
   @override
@@ -93,7 +97,7 @@ class _CarrinhoDeCompraState extends State<CarrinhoDeCompra> {
             ),
           ),
           Positioned(
-            bottom: 0,
+            bottom: 60,
             right: 0,
             child: Container(
               padding: const EdgeInsets.all(10),
@@ -107,7 +111,8 @@ class _CarrinhoDeCompraState extends State<CarrinhoDeCompra> {
             ),
           ),
           Positioned(
-            bottom: 0,
+            
+            bottom: 60,
             left: 0,
             child: Container(
               padding: const EdgeInsets.all(10),
@@ -119,6 +124,90 @@ class _CarrinhoDeCompraState extends State<CarrinhoDeCompra> {
               ),
             ),
           ),
+          
+            Align(
+              alignment: Alignment.bottomCenter,
+              child: Container(
+                padding: EdgeInsets.all(15),
+                child: ElevatedButton(
+                    onPressed: carroDeCompra.isNotEmpty ? () {
+                        if (carroDeCompra.isNotEmpty) {
+     
+              showDialog(
+  context: context,
+  builder: (context) {
+    return AlertDialog(
+      title: Text('Forma de pagamento'),
+      content: DropdownButtonFormField<String>(
+        value: _metodoInicial,
+        onChanged: (value) {
+          setState(() {
+            _metodoInicial = value!;
+          });
+        },
+        items: _foramasDePagamento.map((method) {
+          return DropdownMenuItem<String>(
+            value: method,
+            child: Text(method),
+          );
+        }).toList(),
+      ),
+      actions: [
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            ElevatedButton(
+              onPressed: () {
+                setState(() {
+                  carroDeCompra.clear();
+                });
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(
+                    content: Text('Pedido realizado'),
+                    duration: Duration(seconds: 1),
+                  ),
+                );
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => SecundPage(usuario: usuario),
+                  ),
+                );
+              },
+              child: Text('Pagar'),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              child: Text('Cancelar'),
+            ),
+          ],
+        ),
+      ],
+    );
+  },
+);
+      
+                        }
+  } : null, // Define como null se a lista estiver vazia
+  style: ButtonStyle(
+    minimumSize: MaterialStateProperty.all(
+      Size(390, 50),
+    ),
+    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+      RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(10.0),
+      ),
+    ),
+  ),
+  child: Text('Fechar pedido'),
+)
+
+                        
+                      ),
+            ),
+          
         ],
       ),
     );
