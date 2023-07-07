@@ -12,23 +12,6 @@ class Teste extends StatefulWidget {
 class _TesteState extends State<Teste> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        body:Container(
-
-
-      
-                      
-        
-          
-
-
-          
-          
-            
-          
-        
-        )
-    );
+    return Scaffold(body: Container());
   }
 }
-

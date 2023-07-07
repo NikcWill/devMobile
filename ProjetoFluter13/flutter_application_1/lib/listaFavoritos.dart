@@ -11,18 +11,15 @@ class Favoritos extends StatefulWidget {
 }
 
 class _FavoritosState extends State<Favoritos> {
-
-
-@override
-
-
+  @override
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-              appBar: AppBar(
-                title: Text('Favoritos'),
-                centerTitle: true,
-              ),body: Stack(
+      appBar: AppBar(
+        title: Text('Favoritos'),
+        centerTitle: true,
+      ),
+      body: Stack(
         children: [
           Container(
             padding: const EdgeInsets.all(10),
@@ -35,7 +32,8 @@ class _FavoritosState extends State<Favoritos> {
                 double valor = produto['valor'];
                 return ListTile(
                   title: Text(nome),
-                  subtitle: Text('Preço unitário \$${valor.toStringAsFixed(2)}'),
+                  subtitle:
+                      Text('Preço unitário \$${valor.toStringAsFixed(2)}'),
                   trailing: Row(
                     mainAxisSize: MainAxisSize.min,
                     children: [
@@ -44,16 +42,15 @@ class _FavoritosState extends State<Favoritos> {
                           setState(() {
                             favoritos.remove(produto);
                             ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(
-                              content: Text('$nome removido do carrinho!'),
-                              duration: Duration(seconds: 1),
-                            ),
-                          );
+                              SnackBar(
+                                content: Text('$nome removido do carrinho!'),
+                                duration: Duration(seconds: 1),
+                              ),
+                            );
                           });
                         },
                         icon: Icon(Icons.delete_sharp),
                       ),
-
                     ],
                   ),
                   leading: Image.asset(produto['foto']),

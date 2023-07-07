@@ -31,7 +31,7 @@ class _HomePageState extends State<HomePage> {
             padding: EdgeInsets.only(top: 230),
             child: Expanded(
               child: LayoutBuilder(
-                builder: (BuildContext context, BoxConstraints constraints) { 
+                builder: (BuildContext context, BoxConstraints constraints) {
                   return Image.asset(
                     'assets/imagens/backGround.png',
                     fit: BoxFit.contain,
@@ -55,17 +55,17 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
               Container(
-                padding: EdgeInsets.all(20), 
+                padding: EdgeInsets.all(20),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
                       "Sing In",
-                        style: TextStyle(
-                          fontFamily: AutofillHints.addressState,
-                          fontSize: 35,
-                          fontWeight: FontWeight.bold,
-                        ),
+                      style: TextStyle(
+                        fontFamily: AutofillHints.addressState,
+                        fontSize: 35,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                     SizedBox(height: 60.0),
                     TextField(
@@ -76,21 +76,22 @@ class _HomePageState extends State<HomePage> {
                         ),
                         hintText: 'Login',
                         prefixIcon: Icon(Icons.person),
-                        filled: true, 
+                        filled: true,
                         fillColor: Colors.white,
                       ),
                     ),
                     SizedBox(height: 16.0),
                     TextField(
                       decoration: InputDecoration(
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(10.0),
-                          ),
-                          hintText: 'Senha',
-                          prefixIcon: Icon(Icons.lock),
-                          filled: true, 
-                          fillColor: Colors.white,),
-                          obscureText: true,
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10.0),
+                        ),
+                        hintText: 'Senha',
+                        prefixIcon: Icon(Icons.lock),
+                        filled: true,
+                        fillColor: Colors.white,
+                      ),
+                      obscureText: true,
                     ),
                     SizedBox(height: 16.0),
                     ElevatedButton(
@@ -107,7 +108,8 @@ class _HomePageState extends State<HomePage> {
                         minimumSize: MaterialStateProperty.all(
                           Size(600, 50),
                         ),
-                        shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                        shape:
+                            MaterialStateProperty.all<RoundedRectangleBorder>(
                           RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(10.0),
                           ),
@@ -121,7 +123,7 @@ class _HomePageState extends State<HomePage> {
             ],
           ),
         ],
-      ), 
+      ),
     );
   }
 }
